@@ -17,12 +17,12 @@ function get_category_name($category_id) {
     return $category_name;
 }
 
-function add_category($category_name){
+function add_category($categoryName){
     global $db;
     $results = false;
     $dbs = $db->prepare('insert into categories'
-                        . 'set category_name = :category_name');
-    $dbs->bindParam(':category_name', $category_name, PDO::PARAM_STR);
+                        . 'set categoryName = :categoryName');
+    $dbs->bindParam(':category_name', $categoryName, PDO::PARAM_STR);
     
     if ( $dbs->execute() && $dbs->rowCount() > 0 ) {                
         $results = true;
@@ -30,12 +30,12 @@ function add_category($category_name){
     return $results;
 }
 
-function del_category($catagory_name){
+function del_category($catagoryName){
     global $db;
     $results = false;
     $dbs = $db->prepare('delete from categories'
                         . 'where category_name = :category_name');
-    $dbs->bindParam(':category_name', $category_name, PDO::PARAM_STR);
+    $dbs->bindParam(':category_name', $categoryName, PDO::PARAM_STR);
     
     if ( $dbs->execute() && $dbs->rowCount() > 0 ) {                
         $results = true;
