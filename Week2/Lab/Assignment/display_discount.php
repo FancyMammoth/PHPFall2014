@@ -7,7 +7,7 @@
 </head>
 <body>
     <?php
-            
+        $error_message = '';
         $desc = $_POST['desc'];
         $price = $_POST['price'];
         $discount = $_POST['discount'];
@@ -16,22 +16,28 @@
         
         if ( empty($desc) ) {
             $error_message = 'Description is a required field.'; 
-            exit();
+            
         }
         else if ( !is_string($desc) )  {
             $error_message = 'Investment must be a valid number.'; 
-            exit();
+            
         }
             
         //validate price and discount
             
         else if (!is_numeric($price)){
             $error_message = 'Price must be a numeric value';
-            exit();}
+        }
         else if (!is_numeric($discount)){
             $error_message = 'Discount must be a numeric value';
-            exit();}
+         }
         
+         if (!empty($error_message))
+         {
+             echo $error_message;
+             include('index.php');
+             exit();
+         }
                 
         $discPct = $discount / 100;
         $discAmt = $price * $discPct;
