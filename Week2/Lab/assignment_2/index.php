@@ -7,6 +7,17 @@
 </head>
 
 <body>
+    <?php
+    
+    if (empty($_POST)){
+        $investment = rand(100, 10000);
+        $interest_rate = rand(1, 15);
+        $years = rand(2, 50);
+    }
+        
+    
+    ?>
+    
     <div id="content">
     <h1>Future Value Calculator</h1>
     <?php if (!empty($error_message)) { ?>
