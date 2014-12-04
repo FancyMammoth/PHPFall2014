@@ -15,6 +15,8 @@
          
             if ( !empty($_POST) ) {
                 
+                var_dump($_POST);
+                
                 $error_message = '';
                 
                 if(empty($_post['fullname'])){
