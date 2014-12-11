@@ -16,9 +16,12 @@ and open the template in the editor.
         
         <a href="?logout=true">Logout</a>
         <?php
-        session_start();
+        //session_start();
+        include 'header.php';
+        include 'funcs.php';
+        include 'functions.php';
         
-        if (empty($_SESSION['loggedin']) || $_SESSION['loggedin'] = false)
+        if (empty($_SESSION['loggedin']) || $_SESSION['loggedin'] === false)
         {
             header('location: login.php');
         }

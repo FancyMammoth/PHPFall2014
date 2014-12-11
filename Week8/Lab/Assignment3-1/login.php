@@ -11,28 +11,34 @@ and open the template in the editor.
     </head>
     <body>
         <?php
-        session_start();
+        //session_start();
         include 'functions.php';
+        include 'funcs.php';
+        include 'header.php';
+        
+        
         
         $password = '';
         $email = '';
+        
+        $classobj = new funcs();
         
         if(!empty($_POST)){
         $password = $_POST['password'];
         $email = $_POST['email'];
         }
         
-        if (checkLogin($password, $email) == true)
+        //if (checkLogin($password, $email) == true)
+        if ($classobj->checkLogin($password, $email) == true)
         {
             $_SESSION['loggedin'] = true;
+            //header('location: admin.php');
+        }
+        var_dump($_SESSION);
+        if(isset($_SESSION['loggedin']) && $_SESSION['loggedin'] == true)
+        {
             header('location: admin.php');
         }
-        
-        else
-        {
-            $_SESSION['loggedin'] = false;
-        }
-                
         
         ?>
         
@@ -43,5 +49,6 @@ and open the template in the editor.
            <br />
             <input type="submit" value="submit" />            
         </form>
+        <a href='signup.php'>Signup</a>
     </body>
 </html>

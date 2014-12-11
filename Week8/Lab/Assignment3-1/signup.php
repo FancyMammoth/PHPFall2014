@@ -13,12 +13,20 @@ and open the template in the editor.
         
         <?php
         include 'functions.php';
+        include 'funcs.php';
+        include 'header.php';
+        
+        $classobj = new funcs();
+        $error_message = '';
+        
                 
         if ( !empty($_POST) ) {
                 
                 //var_dump($_POST);
+                $password = $_POST['password'];
+                $email = $_POST['email'];
                 
-                $error_message = '';
+                
                 
                 if(empty($_post['email'])){
                     $error_message .= '<p>email is a required field.</p>';
@@ -27,12 +35,14 @@ and open the template in the editor.
                     $error_message .= '<p>password is a required field.</p>';
                 }
                 
-                if (checkLen($password, $email) == false)
+                //if (checkLen($password, $email) == false)
+                if ($classobj->checkLen($password, $email) == false)
                 {
                     $error_message .= '<p>please enter at least 4 characters for email and password</p>';
                 }
                 
-                if (checkEmail($email) == false)
+                //if (checkEmail($email) == false)
+                if ($classobj->checkEmail($email) == false)
                 {
                     $error_message .= '<p>The email you have entered is already in use please try another</p>';
                 }
@@ -46,7 +56,7 @@ and open the template in the editor.
                     $dbs = $db->prepare('insert into signup set email = :email, password = :password');     
 
                     $dbs->bindParam(':email', $email, PDO::PARAM_STR);
-                    $password = hashPass($password);
+                    $password = $classobj->hashPass($password);
                     $dbs->bindParam(':password', $password, PDO::PARAM_STR);
 
                          if ( $dbs->execute() && $dbs->rowCount() > 0 ) {
@@ -79,5 +89,6 @@ and open the template in the editor.
            <br />
             <input type="submit" value="submit" />            
         </form>
+        <a href='login.php'>return to login</a>
     </body>
 </html>
