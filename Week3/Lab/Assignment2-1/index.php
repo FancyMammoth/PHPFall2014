@@ -19,16 +19,16 @@
                 
                 $error_message = '';
                 
-                if(empty($_post['fullname'])){
+                if(empty($_POST['fullname'])){
                     $error_message .= '<p>name is a required field.</p>';
                 }
-                if(empty($_post['phone'])){
+                if(empty($_POST['phone'])){
                     $error_message .= '<p>phone is a required field.</p>';
                 }
-                if(empty($_post['email'])){
+                if(empty($_POST['email'])){
                     $error_message .= '<p>email is a required field.</p>';
                 }
-                if(empty($_post['zip'])){
+                if(empty($_POST['zip'])){
                     $error_message .= '<p>zip is a required field.</p>';
                 }
                 if (empty ($error_message) )
@@ -69,7 +69,7 @@
             <input type="submit" value="submit" />            
         </form>
         
-        
+        <a href='table.php'>view users</a>
        
     </body>
 </html>

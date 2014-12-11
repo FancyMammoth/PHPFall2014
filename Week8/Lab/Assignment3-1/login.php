@@ -14,8 +14,13 @@ and open the template in the editor.
         session_start();
         include 'functions.php';
         
+        $password = '';
+        $email = '';
+        
+        if(!empty($_POST)){
         $password = $_POST['password'];
         $email = $_POST['email'];
+        }
         
         if (checkLogin($password, $email) == true)
         {
